@@ -1,7 +1,7 @@
 {
-  "name": "item-icon-updater",
-  "title": "Item Icon Updater",
-  "description": "Automatically updates missing icons on actor-owned items (inventory, features, spells, etc.). This is particularly useful in conjunction with the VTTA D&D Beyond Integration module for importing full characters. Item names are searched for in optional user-specified dictionary, a built-in dictionary, all game items, and all item compendiums.",
+  "name": "plutonium-item-icon-updater",
+  "title": "Plutonium Item Icon Updater",
+  "description": "Automatically updates missing icons on actor-owned items (inventory, features, spells, etc.). This is particularly useful in conjunction with the VTTA D&D Beyond Integration module for importing full characters. Item names are searched for in optional user-specified dictionary, a built-in dictionary, all game items, and all item compendiums. This is an update for Plutonium default icons.",
   "author": "dfreds",
   "version": "0.0.4",
   "minimumCoreVersion": "0.6.6",

@@ -3,7 +3,7 @@ import { log } from './helper.js';
 let combinedDict = {};
 
 Hooks.on('init', () => {
-    game.settings.register("item-icon-updater", "customDictionaryPath", {
+    game.settings.register("plutonium-item-icon-updater", "customDictionaryPath", {
         name: "Custom Icon Dictionary",
         hint: "If specified, this dictionary will be searched for item icons prior to searching default locations. Takes effect after the next page refresh. See ReadMe on GitHub for more information.",
         scope: "world",
@@ -143,7 +143,7 @@ async function UpdateDictionary() {
 	log("Building dictionary.")
 	
 	// Load Custom Dictionary
-	let customDictPath = game.settings.get('item-icon-updater', 'customDictionaryPath');
+	let customDictPath = game.settings.get('plutonium-item-icon-updater', 'customDictionaryPath');
 
 	if (customDictPath) {
 		log("Loading custom dictionary: " + customDictPath);
