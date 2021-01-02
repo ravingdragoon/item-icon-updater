@@ -189,7 +189,6 @@ function AddItemToDictionary (item) {
 	
 	let itemName = GetCleanedItemName(item);
 	if (!(itemName in combinedDict)){
-		log('adding ' + item.img + ' to dictionary');
 		combinedDict[itemName.replace(/(\'|\‘|\’)/gm,"").toLowerCase()] = item.img;
 	}
 }
