@@ -2,6 +2,8 @@
 A Foundry VTT Module for updating missing icons on actor-owned items (inventory, features, spells, etc.). 
 This is particularly useful in conjunction with the VTTA D&D Beyond Integration module for importing full characters.
 
+NOTE: This is a simple fork that accounts for default Plutonium items.
+
 Updates happen at the following triggers:
 * Page load or refresh: All items owned by all actors are checked.
 * Actor creation: All items owned by the new actor are checked.
@@ -27,7 +29,7 @@ My approach is slightly different from the VTTA approach, which means the tools 
 ## Installation
 1. Copy this link and use it in Foundry's Module Manager to install the Module
 
-    > https://raw.githubusercontent.com/kelsa-gm/item-icon-updater/main/module.json
+    > https://raw.githubusercontent.com/dfreds/item-icon-updater/main/module.json
     
 2. Enable the Module in your Worlds Module Settings
 
