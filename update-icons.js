@@ -31,7 +31,7 @@ Hooks.on("createOwnedItem", function(actor, item) {
 });
 
 Hooks.on("createActor", function(actor) {
-//	log("Create Actor triggered.");
+	log("Create Actor triggered.");
 	UpdateActor(actor);
 });
 
@@ -45,8 +45,8 @@ function UpdateAllActors() {
 }
 
 function UpdateActor(actor) {
-	//log("Updating " + actor.name);
-    let updates = [];
+	log("Updating " + actor.name);
+  let updates = [];
 	  
 	for (let key of actor.items.keys()) {
 	    let item = actor.items.get(key);
@@ -57,11 +57,11 @@ function UpdateActor(actor) {
 		}
 	}
 	ExecuteUpdates(actor, updates);
-//	log("Completed updating " + actor.name);
+	log("Completed updating " + actor.name);
 }
 
 function UpdateItem(actor, item) {
-//	log("Updating " + item.name + " for " + actor.name);
+	log("Updating " + item.name + " for " + actor.name);
 	let updates = [];
 	  
 	let update = GetImageUpdate(item);
@@ -70,7 +70,7 @@ function UpdateItem(actor, item) {
 	}
 	
 	ExecuteUpdates(actor, updates);
-//	log("Completed updating " + item.name + " for " + actor.name);
+	log("Completed updating " + item.name + " for " + actor.name);
 }
 
 function GetImageUpdate(item) {
@@ -78,8 +78,9 @@ function GetImageUpdate(item) {
 	if (item.type == "class") { return null }
 
 	let imageName = GetImageName(item);
+	let imagePath = GetImagePath(item);
 	  
-	if (imageName == "mystery-man.svg") {
+	if (imageName == "mystery-man.svg" || imagePath == "modules/plutonium/media/icon") {
 		let itemName = GetCleanedItemName(item);
 		let altItemName = GetAlternateItemName(itemName);
 		
@@ -96,6 +97,13 @@ function GetImageUpdate(item) {
 function GetImageName(item) {
 	let imageArr = item.img.split("/");
 	return imageArr[imageArr.length-1];
+}
+
+function GetImagePath(item) {
+	let imageArr = item.img.split("/");
+	imageArr.pop();
+
+	return imageArr.join("/");
 }
 
 function GetCleanedItemName(item) {
@@ -175,10 +183,13 @@ async function UpdateDictionary() {
 
 function AddItemToDictionary (item) {
 	let imageName = GetImageName(item);
-	if (imageName == "mystery-man.svg") {return;}
+	let imagePath = GetImagePath(item);
+
+	if (imageName == "mystery-man.svg" || imagePath == "modules/plutonium/media/icon") {return;}
 	
 	let itemName = GetCleanedItemName(item);
 	if (!(itemName in combinedDict)){
+		log('adding ' + item.img + ' to dictionary');
 		combinedDict[itemName.replace(/(\'|\‘|\’)/gm,"").toLowerCase()] = item.img;
 	}
 }
