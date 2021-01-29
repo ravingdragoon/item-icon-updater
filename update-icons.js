@@ -31,21 +31,21 @@ Hooks.on("createOwnedItem", function(actor, item) {
 });
 
 Hooks.on("createActor", function(actor) {
-	log("Create Actor triggered.");
+	//log("Create Actor triggered.");
 	UpdateActor(actor);
 });
 
 function UpdateAllActors() {
-	log("Update All Actors triggered.");
+	//log("Update All Actors triggered.");
 	for (let actorCount = 0; actorCount < game.data.actors.length; actorCount++) {
 		const actor = game.actors.get(game.data.actors[actorCount]._id);
 		UpdateActor(actor);
 	}
-	log("Completed updating all actors.")
+	//log("Completed updating all actors.")
 }
 
 function UpdateActor(actor) {
-	log("Updating " + actor.name);
+	//log("Updating " + actor.name);
   let updates = [];
 	  
 	for (let key of actor.items.keys()) {
@@ -57,11 +57,11 @@ function UpdateActor(actor) {
 		}
 	}
 	ExecuteUpdates(actor, updates);
-	log("Completed updating " + actor.name);
+	//log("Completed updating " + actor.name);
 }
 
 function UpdateItem(actor, item) {
-	log("Updating " + item.name + " for " + actor.name);
+	//log("Updating " + item.name + " for " + actor.name);
 	let updates = [];
 	  
 	let update = GetImageUpdate(item);
@@ -70,7 +70,7 @@ function UpdateItem(actor, item) {
 	}
 	
 	ExecuteUpdates(actor, updates);
-	log("Completed updating " + item.name + " for " + actor.name);
+	//log("Completed updating " + item.name + " for " + actor.name);
 }
 
 function GetImageUpdate(item) {
@@ -131,22 +131,22 @@ function ExecuteUpdates(actor, updates) {
 	if (updates.length > 0) {
 		if(actor.can(game.user, 'update')){
 			actor.updateEmbeddedEntity("OwnedItem", updates);
-			log("Updated " + updates.length + " item icons for " + actor.name + ".")
+			//log("Updated " + updates.length + " item icons for " + actor.name + ".")
 		}
 		else {
-			log("User lacks permission to update " + actor.name + ". This message may display for a player when non-owned characters are being updated by others.");
+			//log("User lacks permission to update " + actor.name + ". This message may display for a player when non-owned characters are being updated by others.");
 		}
 	};
 }
 
 async function UpdateDictionary() {
-	log("Building dictionary.")
+	//log("Building dictionary.")
 	
 	// Load Custom Dictionary
 	let customDictPath = game.settings.get('plutonium-item-icon-updater', 'customDictionaryPath');
 
 	if (customDictPath) {
-		log("Loading custom dictionary: " + customDictPath);
+		//log("Loading custom dictionary: " + customDictPath);
 		try {
 			let { customDict } = await import ("../../" + customDictPath);
 			for (let key in customDict) {
@@ -154,7 +154,7 @@ async function UpdateDictionary() {
 			}
 		}
 		catch(err) {
-			log("Error loading custom dictionary. Defaults will be used. " + err.message);
+			//log("Error loading custom dictionary. Defaults will be used. " + err.message);
 		}
 	}
 	
