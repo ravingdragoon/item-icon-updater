@@ -1,5 +1,4 @@
 import { iconDict } from './icon-dictionary-0.7.js';
-import { log } from './helper.js';
 let combinedDict = {};
 
 Hooks.on('init', () => {
