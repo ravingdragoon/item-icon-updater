@@ -157,7 +157,7 @@ async function UpdateDictionary() {
 	if (customDictPath) {
 		log("Loading custom dictionary: " + customDictPath);
 		try {
-			let { customDict } = await import("../" + customDictPath);
+			let { customDict } = await import("/https://assets.forge-vtt.com/bazaar/systems/dnd5e/icon);
 			for (let key in customDict) {
 				combinedDict[key.replace(/(\'|\‘|\’)/gm, "").toLowerCase()] = customDict[key];
 			}
